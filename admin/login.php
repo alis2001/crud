@@ -1,5 +1,6 @@
  <?php
- 	session_start();
+ 	require_once('config.php');
+
  ?>
  <!DOCTYPE html>
  <html>
@@ -8,15 +9,7 @@
  </head>
  <body>
 	<?php
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "project1";
-		$conn = mysqli_connect($servername, $username, $password, $dbname);
-		if (!$conn) {
-			die("connection failed" . mysqli_connect_error());
-		}
-
+	
  		if (isset($_POST['submit'])) {
  			$username = $_POST['username'];	
  			$password = sha1($_POST['password']);

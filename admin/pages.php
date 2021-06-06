@@ -1,13 +1,41 @@
 <?php 
-	session_start();
-	if (empty($_SESSION['login'])) {
-		header('location:login.php');
-	}
+	require_once('config.php');
+	test_session();
 	if (!empty($_GET['action'])) {
 		$action = $_GET['action'];
 	}
 	if (!empty($_GET['id'])) {
 		$id = $_GET['id'];
+	}
+	if (isset($_POST['submit'])) {
+		if ($_POST['formAction'] == "add") {
+			$title = test_input($_POST['title']);
+			$body = test_input($_POST['body']);
+			if (empty($title || $body)) {
+					echo "Please Insert the fields above";
+			}else{
+				$insert = "INSERT INTO pages(title, body) VALUES('$title', '$body')";
+				if (mysqli_query($conn,$insert)) {
+					header("location:pages.php");
+				}else{	
+					echo "Sorry";
+				}
+			}	
+		}elseif ($_POST['formAction'] == "edit"){
+			$query = "SELECT * FROM pages WHERE id='$id' ";
+			$res = mysqli_query($conn,$query);
+			$row = mysqli_fetch_assoc($res);
+			if (empty($row['title'] || $row['body'])) {
+				echo "Please fill out the form";
+			}else{
+				$title = $_POST['title'];
+				$body = $_POST['body'];
+				$query = "UPDATE pages SET title='$title', body = '$body' WHERE id='$id' ";
+				mysqli_query($conn,$query);
+				header("location:pages.php");
+			}	
+			
+		}
 	}
  ?>
 <!DOCTYPE html>
@@ -21,15 +49,6 @@
 </head>
 <body>
 	<?php 
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "project1";
-		$conn = mysqli_connect($servername, $username, $password, $dbname);
-		if (!$conn) {
-			die("connection failed" . mysqli_connect_error());
-		}
-
 		function test_input($a){
 			trim($a);
 			htmlspecialchars($a);
@@ -78,46 +97,27 @@
 			<form method="post">
 				<input type="title" name="title"><br>
 				<textarea name="body"></textarea><br>
+				<input type="hidden" name="formAction" value="add">
 				<input type="submit" name="submit">
 			</form>
+			
 	<?php
-			if (isset($_POST['submit'])) {
-				$title = test_input($_POST['title']);
-				$body = test_input($_POST['body']);
-				if (empty($title || $body)) {
-					echo "Please Insert the fields above";
-				}else{
-					$insert = "INSERT INTO pages(title, body) VALUES('$title', '$body')";
-					if (mysqli_query($conn,$insert)) {
-						header("location:pages.php");
-					}else{	
-						echo "Sorry";
-					}
-				}
-			}
+
 		}elseif ($action == "edit") {
-			$query = "SELECT * FROM pages WHERE id='$id' ";
-			$res = mysqli_query($conn,$query);
-			$row = mysqli_fetch_assoc($res);
+				$query = "SELECT * FROM pages WHERE id='$id' ";
+				$res = mysqli_query($conn,$query);
+				$row = mysqli_fetch_assoc($res);
+			
 	?>
 			<h1>Edit Page</h1>
 			<form method="post">
-				<input type="title" name="titleUpdate" value="<?= $row['title'] ?>"><br>
-				<textarea name="bodyUpdate"><?= $row['body'] ?></textarea><br>
+				<input type="title" name="title" value="<?= $row['title'] ?>"><br>
+				<textarea name="body"><?= $row['body'] ?></textarea><br>
+				<input type="hidden" name="formAction" value="edit">
 				<input type="submit" name="submit">
 			</form>
 	<?php	
-			if (isset($_POST['submit'])) {
-				if (empty($row['title'] || $row['body'])) {
-					echo "Please fill out the form";
-				}else{
-					$titleUpdate = $_POST['titleUpdate'];
-					$bodyUpdate = $_POST['bodyUpdate'];
-					$query = "UPDATE pages SET title='$titleUpdate', body = '$bodyUpdate' WHERE id='$id' ";
-					mysqli_query($conn,$query);
-					header("location:pages.php");
-				}	
-			}
+			
 		}elseif ($action == "delete") {			
 			$delete = "DELETE FROM pages WHERE id='$id' ";
 			mysqli_query($conn,$delete);

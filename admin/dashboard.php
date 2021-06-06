@@ -1,5 +1,6 @@
 <?php
-	session_start(); 
+	require_once('config.php');
+	test_session(); 
 	if (empty($_SESSION['login'])) {
 		header('location:login.php');
 	}	
