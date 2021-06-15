@@ -1,4 +1,5 @@
 <?php 
+	$errors = array();
 	require_once('config.php');
 	test_session();
 	if (!empty($_GET['action'])) {
@@ -12,13 +13,13 @@
 			$title = test_input($_POST['title']);
 			$body = test_input($_POST['body']);
 			if (empty($title || $body)) {
-					echo "Please Insert the fields above";
+					$errors[0] = "Please Insert the fields above";
 			}else{
 				$insert = "INSERT INTO pages(title, body) VALUES('$title', '$body')";
 				if (mysqli_query($conn,$insert)) {
 					header("location:pages.php");
 				}else{	
-					echo "Sorry";
+					$errors[1] = "Sorry";
 				}
 			}	
 		}elseif ($_POST['formAction'] == "edit"){
@@ -26,7 +27,7 @@
 			$res = mysqli_query($conn,$query);
 			$row = mysqli_fetch_assoc($res);
 			if (empty($row['title'] || $row['body'])) {
-				echo "Please fill out the form";
+				$errors[2] = "Please fill out the form";
 			}else{
 				$title = $_POST['title'];
 				$body = $_POST['body'];
@@ -39,15 +40,19 @@
 	}
  ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/new.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<style type="text/css">
 		td {padding: 10px};
 		tr {padding: 20px};
 	</style>
 </head>
-<body>
+<body style="background-color: #666699;">
 	<?php 
 		function test_input($a){
 			trim($a);
@@ -93,13 +98,27 @@
 	<?php  
 		}elseif ($action == "add") {
 	?>
-			<h1>Add Page</h1>
-			<form method="post">
-				<input type="title" name="title"><br>
-				<textarea name="body"></textarea><br>
+		<div class="container">	
+			<form method="post" class="form-horizontal">
+				<h1>Add Page</h1>
+				<div class="input-group col-sm-6">
+					<input type="title" name="title"><br>
+				</div>
+				<div class="input-group col-sm-6">
+					<textarea name="body"></textarea><br>
+				</div>
 				<input type="hidden" name="formAction" value="add">
-				<input type="submit" name="submit">
+				<input type="submit" name="submit" class="btn btn-default"><br>
+				<div class="ifContainer">
+					<?php
+						if (isset($errors[0])) {
+						 	print_r($errors[0]);
+						} 
+		 			?>
+	 			</div>
 			</form>
+		</div>	
+	
 			
 	<?php
 
@@ -108,14 +127,26 @@
 				$res = mysqli_query($conn,$query);
 				$row = mysqli_fetch_assoc($res);
 			
-	?>
-			<h1>Edit Page</h1>
-			<form method="post">
-				<input type="title" name="title" value="<?= $row['title'] ?>"><br>
-				<textarea name="body"><?= $row['body'] ?></textarea><br>
+	?>	
+		<div class="container">
+			<form method="post" class="form-horizontal">
+				<h1>Edit Page</h1>
+				<div class="input-group col-sm-6">
+					<input type="title" name="title" value="<?= $row['title'] ?>"><br>
+				</div>
+				<div class="input-group col-sm-6">
+					<textarea name="body"><?= $row['body'] ?></textarea><br>
+				</div>
 				<input type="hidden" name="formAction" value="edit">
-				<input type="submit" name="submit">
-			</form>
+				<input type="submit" name="submit" class="btn btn-default">
+			</form><br>
+		</div>	
+	<?php
+			if (isset($errors[2])) {
+				print_r($errors[2]);
+			}
+
+	?>		
 	<?php	
 			
 		}elseif ($action == "delete") {			
