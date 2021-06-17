@@ -1,0 +1,403 @@
+body {
+	position: relative;
+	overflow-y:scroll;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#main {
+	
+	width: 100%;
+	
+	
+}
+
+.frame {
+	
+	height: 650px;
+	position: relative;
+	width: 50%;
+	
+
+}
+
+
+
+
+#container1{
+	
+	width: 70%;
+	background-color: #FFFFF0;
+	overflow: hidden;
+	text-align: center;
+	margin-left: 15%;
+	height: 650px;
+
+
+}
+
+#first {
+	float: left;
+	text-align: left;
+	background-color: #002124;
+	width: 50%;
+	text-align: center;
+
+	
+}
+
+li {
+	
+	padding: 18px;
+	border-radius: 15px;
+	display: block;
+	
+}
+
+
+
+ul {
+	
+	margin-top: 45px;
+	text-align: center;
+	list-style-type: none;
+	padding: 20px;
+	
+
+
+}
+
+a {
+
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+	font-family: 'Montserrat', sans-serif;
+ 	font-weight: 300;
+ 	text-transform: uppercase;
+
+}
+
+a:hover{
+	color: #52858f;
+	transition: 0.5s;
+
+}
+
+img	{
+
+	width: 30%;
+	border-radius: 5px;
+
+}
+
+
+
+#second {
+
+	
+	width: 50%;
+	background-color: #6e9e9c;
+	text-align: center;
+	float: left;	
+	
+    
+
+}
+
+
+.textstyle {
+
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+	font-size: 30px;
+
+}
+
+#handwrite {
+	padding-bottom: -5px;
+	padding-top: 20px;
+
+}
+
+#hi {
+
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	margin-bottom: 5px;
+	font-size: 25px;
+	color: #ccffd6;
+	margin-right: 40px;
+}
+
+#hi2 {
+	font-size: 20px;
+	font-family: FreeMono, monospace;
+	color: white;
+	margin-right: 40px;
+}
+
+#imageFrame {
+
+	float: left;
+	width: 50%;
+	height: 200px;
+}
+
+#textFrame {
+	
+	float: left;
+	width: 50%;
+	margin-top: 25px;
+	height: 200px;
+
+}
+
+#image2 {
+	width: 200px;
+	height: 200px;
+
+}
+
+#col1 {
+	float: left;
+	width: 45%;
+	height: 200px;
+}
+
+#col2 {
+
+	float: left;
+	width: 55%;
+	height: 200px;
+
+}
+
+p {
+	font-family: 'Montserrat', sans-serif;
+	color: #deffbd;
+	font-size: 15px;
+}
+
+#container2{
+	
+	width: 70%;
+	background-color: #FFFFF0;
+	overflow: hidden;
+	text-align: center;
+	margin-left: 15%;
+	height: 750px;
+
+}
+	
+#third {
+	width: 50%;
+	float: left;
+}
+
+img#resume {
+
+	width: 100%;
+	height: 750px;
+	border-radius: 0px;
+
+}
+
+#fourth{
+	float: left;
+	width: 50%;
+	background-color: #474752;
+	height: 750px;
+}
+
+svg {
+	margin-top: 30px;
+	width: 9%;
+	padding: 10px;
+	position: relative;
+	display: inline-block;
+
+}
+
+svg:hover {
+	width: 13%;
+	transition: 0.5s;
+	margin-top: 10px;
+	padding: 5px;
+
+}
+
+#svgFrame {
+	margin-top: 524px;
+	width: 100%;
+	height: 150px;
+	background-color: #a6a6a8;
+}
+
+
+
+#container3 {
+
+	width: 70%;
+	background-color: #FFFFF0;
+	overflow: hidden;
+	text-align: center;
+	margin-left: 15%;
+	height: 650px;
+
+}
+
+#fifth {
+	float: left;
+	width: 50%;
+	background-color: #425463;
+	position: relative;
+}
+
+#form_container {
+	float: left;
+	width: 50%;
+	background-color: #578a99;
+
+
+}
+
+#form_header {
+	padding-bottom: -5px;
+	padding-top: 20px;
+}
+
+form {
+	margin: 0 auto;
+	width: 80%;
+	margin-top: 50px;
+	height: 250px;
+	text-align: left;
+	margin-left: 13%;
+
+}
+
+input {
+	width: 50%;
+	height: 40px;
+	margin: 5px;
+	border-radius: 5px;
+	border: 2px orange solid;
+}
+
+/*input:hover {
+	width: 70%;
+	transition: 2s;
+}
+*/
+
+
+textarea {
+	padding: 30px;
+	height: 100px;
+	width: 50%;
+	margin-left: 8px; 
+	border-radius: 5px;
+	border: 2px orange solid;
+	margin-top: 12px;	
+}
+
+/*textarea:hover {
+	height: 150px;
+	transition: 2s;
+}
+*/
+
+#form_submit {
+	height: 50px;
+	width: 80px;
+	font-size: 30px;
+}
+
+
+button {
+	margin-left: 2%;
+	margin-top: 25px;
+	border-radius: 5px;
+	border: none;
+	background: url('https://api.iconify.design/fa-telegram.svg') no-repeat center center / contain;
+}
+
+button:hover {
+	background-size: 52px;
+
+	transition: 1s;
+
+}
+
+
+#social-media {
+
+	width: 20%;
+
+}
+
+
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50%;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  width: 80%;
+  float: left;
+  margin-right: 300px;
+  margin-top: 60px;
+  
+ 
+  }
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+
+
+.fa-instagram {
+  background: #e09914;
+  color: white;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.arrow {
+  border: solid #deffbd;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+#last_div {
+	margin-top: -20px;
+}

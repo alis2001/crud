@@ -1,0 +1,13 @@
+th{
+	padding: 20px;
+}
+h1,table{
+	margin-left: 30%;
+}
+form{
+	width: 100%;
+}
+.errors{
+	position: fixed;
+	margin: auto;
+}
