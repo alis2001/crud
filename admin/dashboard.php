@@ -1,14 +1,13 @@
 <?php
 	require_once('config.php');
 	test_session(); 
-	
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 </head>
-<body>
+<body style="background-color: #FFFAF0">
 	<?php 
 	 	echo "Welcome";
 		echo "<br>";

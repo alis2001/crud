@@ -52,7 +52,7 @@
 		tr {padding: 20px};
 	</style>
 </head>
-<body style="background-color: #666699;">
+<body style="background-color: #FFFAF0;">
 	<?php 
 		function test_input($a){
 			trim($a);
@@ -67,8 +67,8 @@
 	
 	<?php
 		if (empty($action)) {
-	?>
-			<table>
+	?>		
+			<table class="table-hover table-bordered" style="background-color: #FFFAF0">
 				<tr>
 					<th>ID</th>
 					<th>Title</th>
